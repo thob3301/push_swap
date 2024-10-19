@@ -6,7 +6,7 @@
 #    By: miteixei <miteixei@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/18 20:31:56 by miteixei          #+#    #+#              #
-#    Updated: 2024/10/18 18:27:41 by miteixei         ###   ########.fr        #
+#    Updated: 2024/10/19 21:29:48 by miteixei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,5 +61,7 @@ fclean : clean
 
 re : fclean $(NAME) bonus
 
-bonus : $(obfiles) $(LIBFT)
+bonus : $(BONUS)
+
+$(BONUS) : $(obfiles) $(LIBFT)
 	$(CC) $(CFLAGS) -o $(BONUS) $(obfiles) $(LIBFT)
