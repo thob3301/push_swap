@@ -6,7 +6,7 @@
 /*   By: miteixei <miteixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 17:30:51 by miteixei          #+#    #+#             */
-/*   Updated: 2024/10/18 20:42:59 by miteixei         ###   ########.fr       */
+/*   Updated: 2024/10/19 20:21:06 by miteixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,11 @@ bool	is_sorted(t_all_queues *all_queues)
 	return (true);
 }
 
+// Every space separated argument, including those inside quotes, are read,
+// and pushed into the queue in reverse as to preserve the argument order.
+// The commands are read from standard input and executed imediately.
+// The queue is checked for if it's sorted and the appropriate output is
+// made.
 int	main(int argc, char **argv)
 {
 	t_all_queues	*all_queues;

@@ -6,7 +6,7 @@
 /*   By: miteixei <miteixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 17:37:17 by miteixei          #+#    #+#             */
-/*   Updated: 2024/10/19 19:40:17 by miteixei         ###   ########.fr       */
+/*   Updated: 2024/10/19 20:30:17 by miteixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,7 @@ t_deque_elm	*init_deque_elm(int num)
 
 	element = ft_calloc(1, sizeof(t_deque_elm));
 	if (!element)
-		exit(-1);
+		return (NULL);
 	element->num = num;
-//	element->next = (t_deque_elm *)NULL;
-//	element->prev = (t_deque_elm *)NULL;
 	return (element);
 }

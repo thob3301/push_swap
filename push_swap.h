@@ -6,7 +6,7 @@
 /*   By: miteixei <miteixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 17:33:45 by miteixei          #+#    #+#             */
-/*   Updated: 2024/10/18 18:05:12 by miteixei         ###   ########.fr       */
+/*   Updated: 2024/10/19 20:28:21 by miteixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ void			sorted_y_n(bool answer);
 void			destroy_y_n(t_all_queues *all_queues, bool answer);
 bool			check_duplicates(t_deque *a_queue);
 
+// handling.c
+void			free_null(void *ptr);
 void			split_args_push_queue(char *arg, t_all_queues *all_queues);
 
 #endif

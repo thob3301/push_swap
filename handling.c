@@ -6,11 +6,17 @@
 /*   By: miteixei <miteixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:13:24 by miteixei          #+#    #+#             */
-/*   Updated: 2024/10/18 17:57:39 by miteixei         ###   ########.fr       */
+/*   Updated: 2024/10/19 20:36:35 by miteixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	free_null(void *ptr)
+{
+	free(ptr);
+	ptr = NULL;
+}
 
 void	free_split(char **split_str)
 {
@@ -18,8 +24,8 @@ void	free_split(char **split_str)
 
 	arr_i = 0;
 	while (split_str[arr_i])
-		free(split_str[arr_i++]);
-	free(split_str);
+		free_null(split_str[arr_i++]);
+	free_null(split_str);
 }
 
 bool	is_number(char *nstr)
@@ -39,6 +45,7 @@ static void	escape_now(t_all_queues *all_queues, char **split_str)
 {
 	free_all_queues(all_queues);
 	free_split(split_str);
+	ft_putstr_fd("ERROR\n", 2);
 	exit(-1);
 }
 
