@@ -6,7 +6,7 @@
 /*   By: miteixei <miteixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:49:38 by miteixei          #+#    #+#             */
-/*   Updated: 2024/10/17 17:22:28 by miteixei         ###   ########.fr       */
+/*   Updated: 2024/10/18 21:42:10 by miteixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@
 //	finally, every command queue element is removed sequentially
 //		 and printed to the screen
 //	queues 'a' and 'b' are freed
-
-//	Program execution
 
 void	print_commands(t_all_queues *all_queues)
 {

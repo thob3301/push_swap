@@ -6,7 +6,7 @@
 /*   By: miteixei <miteixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 17:30:51 by miteixei          #+#    #+#             */
-/*   Updated: 2024/10/18 18:43:14 by miteixei         ###   ########.fr       */
+/*   Updated: 2024/10/18 20:42:59 by miteixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ bool	is_sorted(t_all_queues *all_queues)
 	while (element != all_queues->a_queue->tail)
 	{
 		if (element->num >= element->next->num)
-			return (0);
+			return (false);
 		element = element->next;
 	}
 	if (all_queues->b_queue->size)
-		return (0);
-	return (1);
+		return (false);
+	return (true);
 }
 
 int	main(int argc, char **argv)

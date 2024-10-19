@@ -6,7 +6,7 @@
 /*   By: miteixei <miteixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 17:50:53 by miteixei          #+#    #+#             */
-/*   Updated: 2024/10/18 17:29:20 by miteixei         ###   ########.fr       */
+/*   Updated: 2024/10/19 19:57:44 by miteixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,26 +52,30 @@ t_deque_elm	*deque_pop_back(t_deque *queue)
 
 void	deque_push_front(t_deque *queue, t_deque_elm *element)
 {
-	if (!queue || !element)
-		return ;
-	element->next = queue->head;
-	if (queue->head)
-		queue->head->prev = element;
-	else
+	if (!queue->size)
+	{
+		queue->head = element;
 		queue->tail = element;
+		queue->size++;
+		return ;
+	}
+	element->next = queue->head;
+	queue->head->prev = element;
 	queue->head = element;
 	queue->size++;
 }
 
 void	deque_push_back(t_deque *queue, t_deque_elm *element)
 {
-	if (!queue || !element)
-		return ;
-	element->prev = queue->tail;
-	if (queue->tail)
-		queue->tail->next = element;
-	else
+	if (!queue->size)
+	{
 		queue->head = element;
+		queue->tail = element;
+		queue->size++;
+		return ;
+	}
+	element->prev = queue->tail;
+	queue->tail->next = element;
 	queue->tail = element;
 	queue->size++;
 }
