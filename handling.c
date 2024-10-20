@@ -6,17 +6,11 @@
 /*   By: miteixei <miteixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:13:24 by miteixei          #+#    #+#             */
-/*   Updated: 2024/10/19 20:36:35 by miteixei         ###   ########.fr       */
+/*   Updated: 2024/10/20 20:05:45 by miteixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	free_null(void *ptr)
-{
-	free(ptr);
-	ptr = NULL;
-}
 
 void	free_split(char **split_str)
 {
@@ -24,8 +18,8 @@ void	free_split(char **split_str)
 
 	arr_i = 0;
 	while (split_str[arr_i])
-		free_null(split_str[arr_i++]);
-	free_null(split_str);
+		free(split_str[arr_i++]);
+	free(split_str);
 }
 
 bool	is_number(char *nstr)

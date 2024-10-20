@@ -6,7 +6,7 @@
 /*   By: miteixei <miteixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 17:30:51 by miteixei          #+#    #+#             */
-/*   Updated: 2024/10/19 20:21:06 by miteixei         ###   ########.fr       */
+/*   Updated: 2024/10/20 20:31:18 by miteixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,18 +28,25 @@ t_commands	parse_command(const char *cmd, const char **command_strings)
 
 void	read_input_commands(t_all_queues *all_queues)
 {
-	char	*str;
+	char		*str;
+	t_commands	command;
 
 	while (1)
 	{
 		str = get_next_line(0);
 		if (str)
-			all_queues->command_list[parse_command(str,
-				all_queues->command_text)](all_queues);
+		{
+			command = parse_command(str, all_queues->command_text);
+			all_queues->command_list[command](all_queues);
+			if ((int)command == 11)
+			{
+				free(str);
+				exit(-1);
+			}
+		}
 		else
 			break ;
 		free(str);
-		str = NULL;
 	}
 }
 
@@ -48,6 +55,8 @@ bool	is_sorted(t_all_queues *all_queues)
 	t_deque_elm	*element;
 
 	element = all_queues->a_queue->head;
+	if (!all_queues->a_queue->size)
+		return (false);
 	while (element != all_queues->a_queue->tail)
 	{
 		if (element->num >= element->next->num)

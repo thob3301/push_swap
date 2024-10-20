@@ -6,15 +6,14 @@
 #    By: miteixei <miteixei@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/18 20:31:56 by miteixei          #+#    #+#              #
-#    Updated: 2024/10/19 21:29:48 by miteixei         ###   ########.fr        #
+#    Updated: 2024/10/20 19:56:14 by miteixei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
 #-Ofast 
-cfiles := push_swap.c \
-		deque_manipulation.c \
+utils = deque_manipulation.c \
 		destroy.c \
 		init_structs.c \
 		integrity_check.c \
@@ -23,19 +22,12 @@ cfiles := push_swap.c \
 		rotate.c \
 		swap.c \
 		handling.c
+
+cfiles := push_swap.c $(utils)
 
 ofiles := $(patsubst %.c,%.o,$(cfiles))
 
-cbfiles := checker.c \
-		deque_manipulation.c \
-		destroy.c \
-		init_structs.c \
-		integrity_check.c \
-		push.c \
-		reverse_rotate.c \
-		rotate.c \
-		swap.c \
-		handling.c
+cbfiles := checker.c $(utils)
 
 obfiles := $(patsubst %.c,%.o,$(cbfiles))
 
