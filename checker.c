@@ -6,12 +6,15 @@
 /*   By: miteixei <miteixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 17:30:51 by miteixei          #+#    #+#             */
-/*   Updated: 2024/10/20 20:31:18 by miteixei         ###   ########.fr       */
+/*   Updated: 2024/10/20 21:16:36 by miteixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Parses commands by comparing them to a list saved in a static variable.
+// Returns a token, defined in an enum, that corresponds to the command and its
+// respective function by index.
 t_commands	parse_command(const char *cmd, const char **command_strings)
 {
 	t_commands	i;
@@ -26,6 +29,10 @@ t_commands	parse_command(const char *cmd, const char **command_strings)
 	return (INVALID);
 }
 
+// Reads standard input, a token is retrieved from each command received,
+// and the corresponding function is run on the lists.
+// If no match occurs the free_all_queues() function is automatically run,
+// and the program quits.
 void	read_input_commands(t_all_queues *all_queues)
 {
 	char		*str;
@@ -41,6 +48,7 @@ void	read_input_commands(t_all_queues *all_queues)
 			if ((int)command == 11)
 			{
 				free(str);
+				ft_putstr_fd("ERROR\n", 2);
 				exit(-1);
 			}
 		}
@@ -50,6 +58,9 @@ void	read_input_commands(t_all_queues *all_queues)
 	}
 }
 
+// Checks whether the list A is sorted by comparing every adjacent pair
+// and then if list B is empty.
+// Also checks if list A is empty.
 bool	is_sorted(t_all_queues *all_queues)
 {
 	t_deque_elm	*element;

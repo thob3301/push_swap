@@ -6,7 +6,7 @@
 /*   By: miteixei <miteixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 17:37:17 by miteixei          #+#    #+#             */
-/*   Updated: 2024/10/19 20:30:17 by miteixei         ###   ########.fr       */
+/*   Updated: 2024/10/20 21:45:41 by miteixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,13 @@ static void	alloc_check(void *ptr)
 		exit(-1);
 }
 
+// Sets up static variables storing the commands and corresponding functions,
+// and saves them in the all purposes struct.
+// Note: as I'm typing this I realise I could have kept the all_queues struct
+// in the stack with main, as I've done before. I keep taking 2 steps forward
+// and 1 step back in my journey with learning how to program.
+// But the whole command list, function pointer list, enum token thing is
+// pretty neat, right, you have to admit?
 t_all_queues	*init_structs(void)
 {
 	t_all_queues		*queues;

@@ -6,12 +6,14 @@
 /*   By: miteixei <miteixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 17:55:36 by miteixei          #+#    #+#             */
-/*   Updated: 2024/10/20 20:31:09 by miteixei         ###   ########.fr       */
+/*   Updated: 2024/10/20 21:10:10 by miteixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+// Loops over every element of the queue and frees memory until it's empty.
+// deque_pop_front decrements queue->size automatically.
 static void	deque_destroy(t_deque *queue)
 {
 	while (queue->size)

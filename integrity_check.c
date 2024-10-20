@@ -6,7 +6,7 @@
 /*   By: miteixei <miteixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 16:32:35 by miteixei          #+#    #+#             */
-/*   Updated: 2024/10/16 18:55:58 by miteixei         ###   ########.fr       */
+/*   Updated: 2024/10/20 21:57:28 by miteixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	destroy_y_n(t_all_queues *all_queues, bool answer)
 	exit(-1);
 }
 
+// Comapares every number on the list with the numbers ahead. It never checks
+// two elements twice.
 bool	check_duplicates(t_deque *a_queue)
 {
 	t_deque_elm	*starter;

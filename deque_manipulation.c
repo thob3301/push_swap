@@ -6,11 +6,15 @@
 /*   By: miteixei <miteixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 17:50:53 by miteixei          #+#    #+#             */
-/*   Updated: 2024/10/20 19:32:31 by miteixei         ###   ########.fr       */
+/*   Updated: 2024/10/20 21:13:33 by miteixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+// Functions that add and remove elements from the front and back of a deque,
+// used by the push_swap language functions, as well as in initializing the
+// original list.
 
 t_deque_elm	*deque_pop_front(t_deque *queue)
 {
