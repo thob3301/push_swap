@@ -6,11 +6,49 @@
 /*   By: miteixei <miteixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 17:13:24 by miteixei          #+#    #+#             */
-/*   Updated: 2024/10/20 21:29:16 by miteixei         ###   ########.fr       */
+/*   Updated: 2024/10/21 19:17:45 by miteixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+// Checks whether the list A is sorted by comparing every adjacent pair
+// and then if list B is empty.
+// Also checks if list A is empty.
+bool	is_sorted(t_all_queues *all_queues)
+{
+	t_deque_elm	*element;
+
+	element = all_queues->a_queue->head;
+	if (!all_queues->a_queue->size)
+		return (false);
+	while (element != all_queues->a_queue->tail)
+	{
+		if (element->num >= element->next->num)
+			return (false);
+		element = element->next;
+	}
+	if (all_queues->b_queue->size)
+		return (false);
+	return (true);
+}
+
+// Parses commands by comparing them to a list saved in a static variable.
+// Returns a token, defined in an enum, that corresponds to the command and its
+// respective function by index.
+t_commands	parse_command(const char *cmd, const char **command_strings)
+{
+	t_commands	i;
+
+	i = 0;
+	while (i < 11)
+	{
+		if (!ft_strncmp(cmd, command_strings[i], 5))
+			return (i);
+		i++;
+	}
+	return (INVALID);
+}
 
 void	free_split(char **split_str)
 {
@@ -33,14 +71,6 @@ bool	is_number(char *nstr)
 	if (*nstr != '\0')
 		return (0);
 	return (1);
-}
-
-static void	escape_now(t_all_queues *all_queues, char **split_str)
-{
-	free_all_queues(all_queues);
-	free_split(split_str);
-	ft_putstr_fd("ERROR\n", 2);
-	exit(-1);
 }
 
 // Splits a string received by spaces and checks if they're valid numbers,
