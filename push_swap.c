@@ -6,7 +6,7 @@
 /*   By: miteixei <miteixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 17:49:38 by miteixei          #+#    #+#             */
-/*   Updated: 2024/10/30 22:09:53 by miteixei         ###   ########.fr       */
+/*   Updated: 2024/10/31 18:11:25 by miteixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -274,61 +274,76 @@ void	push_close_enough(t_values *values, t_all_queues *all_queues)
 
 void	push_swap_3(t_values *values, t_all_queues *all_queues)
 {
-	if (all_queues->a_queue->head->num == values->lowest_n &&
-		all_queues->a_queue->tail->num == values->highest_n)
-		return ;
-	else if (all_queues->a_queue->head->num != values->lowest_n &&
-		all_queues->a_queue->tail->num == values->highest_n)
-	{
+	if (!(all_queues->a_queue->head->num == values->lowest_n
+		&& all_queues->a_queue->tail->num == values->highest_n)
+		&& !(all_queues->a_queue->head->num == values->highest_n
+		&& all_queues->a_queue->head->next->num == values->lowest_n)
+		&& !(all_queues->a_queue->tail->num == values->lowest_n
+		&& all_queues->a_queue->tail->prev->num == values->highest_n))
 		push_swap_record(SA, all_queues);
-		return ;
-	}
-	else if ((all_queues->a_queue->tail->num == values->lowest_n
-		&& all_queues->a_queue->head->num == values->highest_n)
-		|| all_queues->a_queue->head->num == values->lowest_n)
-	{
-		push_swap_record(SA, all_queues);
-		if (all_queues->a_queue->tail->num == values->lowest_n)
-			push_swap_record(RRA, all_queues);
-		else
-			push_swap_record(RA, all_queues);
-		return ;
-	}
-	else if (all_queues->a_queue->tail->num == values->lowest_n)
-	{
-		push_swap_record(RRA, all_queues);
-		return ;
-	}
-	else if (all_queues->a_queue->head->num == values->highest_n)
+	if (!(all_queues->a_queue->head->num == values->lowest_n
+		&& all_queues->a_queue->tail->num == values->highest_n)
+		&& !(all_queues->a_queue->tail->num == values->lowest_n
+		&& all_queues->a_queue->tail->prev->num == values->highest_n))
 		push_swap_record(RA, all_queues);
+	if (!(all_queues->a_queue->head->num == values->lowest_n
+		&& all_queues->a_queue->tail->num == values->highest_n))
+		push_swap_record(RRA, all_queues);
 }
+
+//{
+//	if (all_queues->a_queue->head->num == values->lowest_n &&
+//		all_queues->a_queue->tail->num == values->highest_n)
+//		return ;
+//	else if (all_queues->a_queue->head->num != values->lowest_n &&
+//		all_queues->a_queue->tail->num == values->highest_n)
+//	{
+//		push_swap_record(SA, all_queues);
+//		return ;
+//	}
+//	else if ((all_queues->a_queue->tail->num == values->lowest_n
+//		&& all_queues->a_queue->head->num == values->highest_n)
+//		|| all_queues->a_queue->head->num == values->lowest_n)
+//	{
+//		push_swap_record(SA, all_queues);
+//		if (all_queues->a_queue->tail->num == values->lowest_n)
+//			push_swap_record(RRA, all_queues);
+//		else
+//			push_swap_record(RA, all_queues);
+//		return ;
+//	}
+//	else if (all_queues->a_queue->tail->num == values->lowest_n)
+//	{
+//		push_swap_record(RRA, all_queues);
+//		return ;
+//	}
+//	else if (all_queues->a_queue->head->num == values->highest_n)
+//		push_swap_record(RA, all_queues);
+//}
 
 void	push_swap_5(t_values *values, t_all_queues *all_queues)
 {
-	ft_bzero(values, sizeof(t_values));
-	check_lowest(values, all_queues->a_queue->head);
-	nbr_of_steps_bottom(values, all_queues->a_queue->tail);
-	nbr_of_steps_top(values, all_queues->a_queue->head);
-	if (values->lowest_top_steps < values->lowest_bottom_steps)
-		rotate_n_steps(values->lowest_top_steps, TOP, A_LIST, all_queues);
-	else
-		rotate_n_steps(values->lowest_bottom_steps, BOTTOM, A_LIST, all_queues);
-	push_swap_record(PB, all_queues);
-	ft_bzero(values, sizeof(t_values));
-	check_lowest(values, all_queues->a_queue->head);
-	nbr_of_steps_bottom(values, all_queues->a_queue->tail);
-	nbr_of_steps_top(values, all_queues->a_queue->head);
-	if (values->lowest_top_steps < values->lowest_bottom_steps)
-		rotate_n_steps(values->lowest_top_steps, TOP, A_LIST, all_queues);
-	else
-		rotate_n_steps(values->lowest_bottom_steps, BOTTOM, A_LIST, all_queues);
-	push_swap_record(PB, all_queues);
+	int	i;
+
+	i = 2;
+	while (i--)
+	{
+		ft_bzero(values, sizeof(t_values));
+		check_lowest(values, all_queues->a_queue->head);
+		nbr_of_steps_bottom(values, all_queues->a_queue->tail);
+		nbr_of_steps_top(values, all_queues->a_queue->head);
+		if (values->lowest_top_steps < values->lowest_bottom_steps)
+			rotate_n_steps(values->lowest_top_steps, TOP, A_LIST, all_queues);
+		else
+			rotate_n_steps(values->lowest_bottom_steps, BOTTOM, A_LIST, all_queues);
+		push_swap_record(PB, all_queues);
+	}
 	ft_bzero(values, sizeof(t_values));
 	check_lowest(values, all_queues->a_queue->head);
 	check_highest(values, all_queues->a_queue->head);
 	push_swap_3(values, all_queues);
-	push_swap_record(PA, all_queues);
-	push_swap_record(PA, all_queues);
+	while (++i < 2)
+		push_swap_record(PA, all_queues);
 }
 
 void	push_swap(t_all_queues *all_queues)
@@ -358,7 +373,7 @@ void	push_swap(t_all_queues *all_queues)
 		nbr_of_steps_bottom(&values, all_queues->a_queue->tail);
 		nbr_of_steps_top(&values, all_queues->a_queue->head);
 		push_close_enough(&values, all_queues);
-	} // Crazy idea: Instead of the following B loop, leave the mid element in list A
+	} // Crazy idea: Instead of doing the following B loop, leave the mid element in list A
 	  // and push every element closest to it back. <5500?
 	while (all_queues->b_queue->size)
 	{

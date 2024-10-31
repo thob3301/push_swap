@@ -6,3 +6,5 @@ push_swap_test_NOT_MINE
 push_swap
 checker
 file
+imgui.ini
+push_swap_visualizer
