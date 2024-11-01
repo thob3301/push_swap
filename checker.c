@@ -6,7 +6,7 @@
 /*   By: miteixei <miteixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 17:30:51 by miteixei          #+#    #+#             */
-/*   Updated: 2024/10/21 19:17:33 by miteixei         ###   ########.fr       */
+/*   Updated: 2024/11/01 20:55:30 by miteixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	main(int argc, char **argv)
 {
 	t_all_queues	*all_queues;
 
-	if (argc == 1)
+	if (argc == 1 || (argc == 2 && argv[1][0] == '\0'))
 		return (0);
 	all_queues = init_structs();
 	while (argc-- > 1)

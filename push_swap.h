@@ -6,7 +6,7 @@
 /*   By: miteixei <miteixei@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 17:33:45 by miteixei          #+#    #+#             */
-/*   Updated: 2024/10/30 22:04:29 by miteixei         ###   ########.fr       */
+/*   Updated: 2024/11/01 20:32:11 by miteixei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <stdbool.h>
+# include <limits.h>
 # include "libft/libft.h"
 # define TOP true
 # define BOTTOM false
@@ -63,8 +64,6 @@ typedef struct s_all_queues
 
 typedef struct s_values
 {
-	int		avg_dist;
-	int		mid_n;
 	int		lowest_n;
 	int		lowest_top_steps;
 	int		lowest_bottom_steps;
@@ -114,5 +113,29 @@ bool			is_sorted(t_all_queues *all_queues);
 t_commands		parse_command(const char *cmd, const char **command_strings);
 void			split_args_push_queue(char *arg, t_all_queues *all_queues);
 void			free_split(char **split_str);
+
+// record_print.c
+void			print_commands(t_all_queues *all_queues);
+void			push_swap_record(t_commands command, t_all_queues *all_queues);
+
+// compare_values.c
+void			step_comp(t_values *values);
+void			value_comp(t_values *values);
+
+// find_number.c
+void			check_lowest(t_values *values, t_deque_elm *queue);
+void			check_highest(t_values *values, t_deque_elm *queue);
+void			check_mid_low(t_values *values, t_all_queues *all_queues);
+void			check_mid_high(t_values *values, t_all_queues *all_queues);
+
+// push_swap_3_5.c
+void			push_swap_3(t_values *values, t_all_queues *all_queues);
+void			push_swap_5(t_values *values, t_all_queues *all_queues);
+
+// rotate_steps.c
+void			rotate_n_steps(int steps, bool side,
+					bool list, t_all_queues *all_queues);
+void			nbr_of_steps_bottom(t_values *values, t_deque_elm *queue);
+void			nbr_of_steps_top(t_values *values, t_deque_elm *queue);
 
 #endif

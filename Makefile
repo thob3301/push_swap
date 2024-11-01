@@ -6,7 +6,7 @@
 #    By: miteixei <miteixei@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/18 20:31:56 by miteixei          #+#    #+#              #
-#    Updated: 2024/10/20 19:56:14 by miteixei         ###   ########.fr        #
+#    Updated: 2024/11/01 20:18:19 by miteixei         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,18 @@ utils = deque_manipulation.c \
 		destroy.c \
 		init_structs.c \
 		integrity_check.c \
+		handling.c \
 		push.c \
 		reverse_rotate.c \
 		rotate.c \
-		swap.c \
-		handling.c
+		swap.c
 
-cfiles := push_swap.c $(utils)
+cfiles := push_swap.c  $(utils) \
+		compare_values.c \
+		find_number.c \
+		push_swap_3_5.c \
+		record_print.c \
+		rotate_steps.c
 
 ofiles := $(patsubst %.c,%.o,$(cfiles))
 
